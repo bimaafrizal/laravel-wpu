@@ -26,8 +26,6 @@ class Post
     {
         return collect(self::$blog_posts);
         //colection adalah pembungkus array agar bisa menjalankan banyak function
-
-
     }
 
     public static function find($slug)

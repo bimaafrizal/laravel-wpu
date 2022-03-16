@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,12 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get ('/home', function () {
+Route::get('/home', function () {
     return view('home', [
         "title" => "Home"
     ]);
 });
 
-Route::get('/blog',[PostController::class, 'index']);
+Route::get('/blog', [PostModelController::class, 'index']);
 //halaman single
-Route::get('blog/{slug}', [PostController::class, 'show']);
+Route::get('blog/{post:slug}', [PostModelController::class, 'show']);
