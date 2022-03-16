@@ -12,4 +12,9 @@ class Post_Model extends Model
     //agar bisa isi database
     //protected $fillable = ['title', 'excerpt', 'body']; //yang boleh diisi
     protected $guarded = ['id']; //yang tidak boleh
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
