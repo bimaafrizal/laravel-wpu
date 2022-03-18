@@ -2,7 +2,7 @@
 @extends('layouts/main')
 @section('container')  
 <h2>{{  $posts->title }}</h2>
-<h5>By: <a class="text-decoration-none" href="#">{{ $posts->user->name }}</a>  in  <a class="text-decoration-none" href="/categories/{{ $posts->category->slug }}">{{ $posts->category->name }} </a> </h5>
+<h5>By: <a class="text-decoration-none" href="/authors/{{ $posts->author->username }}">{{ $posts->author->name }}</a>  in  <a class="text-decoration-none" href="/categories/{{ $posts->category->slug }}">{{ $posts->category->name }} </a> </h5>
 {!! $posts->body !!}
 
 <br>

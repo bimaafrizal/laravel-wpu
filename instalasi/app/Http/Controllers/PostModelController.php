@@ -13,7 +13,8 @@ class PostModelController extends Controller
     {
         return view('blog', [
             "title" => "Blog",
-            "posts" => Post_Model::all()
+            //"posts" => Post_Model::all()
+            "posts" => Post_Model::latest()->get()
         ]);
     }
 
