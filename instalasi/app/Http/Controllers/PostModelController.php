@@ -12,9 +12,9 @@ class PostModelController extends Controller
     public function index()
     {
         return view('blog', [
-            "title" => "Blog",
+            "title" => "All Posts",
             //"posts" => Post_Model::all()
-            "posts" => Post_Model::latest()->get()
+            "posts" => Post_Model::with(['author', 'category'])->latest()->get()
         ]);
     }
 
