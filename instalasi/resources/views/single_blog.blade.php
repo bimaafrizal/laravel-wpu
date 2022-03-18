@@ -2,11 +2,11 @@
 @extends('layouts/main')
 @section('container')  
 <h2>{{  $posts->title }}</h2>
-<h5>{{ $posts->author }} in  <a href="/categories/{{ $posts->category->slug }}">{{ $posts->category->name }} </a> </h5>
+<h5>By: <a class="text-decoration-none" href="#">{{ $posts->user->name }}</a>  in  <a class="text-decoration-none" href="/categories/{{ $posts->category->slug }}">{{ $posts->category->name }} </a> </h5>
 {!! $posts->body !!}
 
 <br>
-<a href="/blog">Back to Blog</a>
+<a class="d-block mt-5" href="/blog">Back to Blog</a>
 @endsection
 {{-- Post_Model::create([
     'title' => "Judul Ke Tiga", 
