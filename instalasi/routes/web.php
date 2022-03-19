@@ -25,6 +25,7 @@ Route::get('/about', function () {
     return view('about', [
         "title" => "About",
         "name" => "Bima Afrizal",
+        "active" => "about",
         "email" => "bimaafrizalmalna@gmail.com",
         "image" => "cv_saya.png"
     ]);
@@ -32,7 +33,8 @@ Route::get('/about', function () {
 
 Route::get('/home', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" => 'home'
     ]);
 });
 
@@ -42,20 +44,22 @@ Route::get('/blog/{post:slug}', [PostModelController::class, 'show']);
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('blog', [
         'title' => "Post by Category : $category->name",
-        'posts' => $category->posts->load('category','author'),
+        'active' => 'categories',
+        'posts' => $category->posts->load('category', 'author'),
     ]);
 });
 
 Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Categories',
+        'active' => 'categories',
         'categories' => Category::all()
     ]);
 });
 
 Route::get('/authors/{author:username}', function (User $author) {
     return view('blog', [
-        'title' => "Post by Author: $author->name" ,
+        'title' => "Post by Author: $author->name",
         'posts' => $author->posts->load('category', 'author'),
     ]);
 });
