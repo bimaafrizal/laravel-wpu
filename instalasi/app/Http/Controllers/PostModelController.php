@@ -5,17 +5,33 @@ namespace App\Http\Controllers;
 use App\Models\Post_Model;
 use App\Http\Requests\StorePost_ModelRequest;
 use App\Http\Requests\UpdatePost_ModelRequest;
+use App\Models\Category;
+use App\Models\User;
 
 class PostModelController extends Controller
 {
 
     public function index()
     {
+        // dd(request('search'));
+        // $posts = Post_Model::latest();
+        $title = '';
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = ' in ' . $category->name;
+        }
+
+        if (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $title = ' by: ' . $author->name;
+        }
+
+
         return view('blog', [
-            "title" => "All Posts",
+            "title" => "All Posts" . $title,
             "active" => "blog",
             //"posts" => Post_Model::all()
-            "posts" => Post_Model::latest()->get()
+            "posts" => Post_Model::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString()
         ]);
     }
 
