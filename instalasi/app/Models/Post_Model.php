@@ -47,4 +47,9 @@ class Post_Model extends Model
             )
         );
     }
+
+    public function getRouteKey()
+    {
+        return 'slug';
+    }
 }
