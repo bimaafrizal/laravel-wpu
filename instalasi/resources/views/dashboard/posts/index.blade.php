@@ -4,7 +4,18 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">My Posts</h1>
   </div>
-
+  @if (Session::has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  @endif
+  @if (Session::has('loginError'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('loginError') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  @endif
   <div class="table-responsive col-lg-8">
     <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create New Post</a>
     <table class="table table-striped table-sm">
@@ -22,9 +33,13 @@
           <td> {{ $loop->iteration }} </td>
           <td> {{ $post->title }} </td>
           <td> {{ $post->category->name }}</td>
-          <td> <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"></a> <span data-feather="eye"></span> </td>
-          <td> <a href="" class="badge bg-warning"></a> <span data-feather="edit"></span> </td>
-          <td> <a href=""" class="badge bg-danger"></a> <span data-feather="x-circle"></span> </td>
+          <td> 
+            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span> </a> 
+            <a href="" class="badge bg-warning"><span data-feather="edit"></span></a> 
+            <a href=""" class="badge bg-danger"><span data-feather="x-circle"></span></a> 
+          </td>
+          {{-- <td>  </td>
+          <td>  </td> --}}
         </tr>
         @endforeach
     </table>

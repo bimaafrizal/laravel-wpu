@@ -50,7 +50,7 @@ class Post_Model extends Model
         );
     }
 
-    public function getRouteKey()
+    public function getRouteKeyName()
     {
         return 'slug';
     }
