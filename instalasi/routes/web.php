@@ -86,5 +86,6 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 //resource controller => otomatis mengelola data crud
-
 Route::resource('dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::get('/dashboard/post/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');

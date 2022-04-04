@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -9,6 +10,7 @@ use Illuminate\Support\Arr;
 class Post_Model extends Model
 {
     use HasFactory;
+    use Sluggable; //membuat slug otomatis
 
     //agar bisa isi database
     //protected $fillable = ['title', 'excerpt', 'body']; //yang boleh diisi
@@ -51,5 +53,14 @@ class Post_Model extends Model
     public function getRouteKey()
     {
         return 'slug';
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }
