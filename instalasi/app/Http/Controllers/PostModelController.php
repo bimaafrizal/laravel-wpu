@@ -26,6 +26,7 @@ class PostModelController extends Controller
             $title = ' by: ' . $author->name;
         }
 
+        //return User::all();
 
         return view('blog', [
             "title" => "All Posts" . $title,

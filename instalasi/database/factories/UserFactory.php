@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+// require_once 'vendor/autoload.php';
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,6 +20,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            // 'name' => 'Bima', 
+            // 'username' => 'bima',
+            // 'email' => 'bima@gmail.com',
+            // 'email_verified_at' => now(),
+            // 'password' => '1234',
+            // 'remember_token' => Str::random(10),
             'name' => $this->faker->name(),
             'username' => $this->faker->unique()->userName(),
             'email' => $this->faker->unique()->safeEmail(),
