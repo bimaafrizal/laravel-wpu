@@ -44,6 +44,7 @@ class PostModelController extends Controller
             "posts" => $post
         ]);
     }
+
     /**
      * Display a listing of the resource.
      *
